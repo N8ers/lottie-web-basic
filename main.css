@@ -1,0 +1,22 @@
+body {
+  background: rgb(27, 27, 27);
+  margin: 0;
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  color: white;
+}
+
+.svg_star {
+  border: 1px solid white;
+  width: 50px;
+  /* position: absolute; */
+  margin: 0 auto;
+  top: -40px;
+  left: -30px;
+  /* pointer-events: none; */
+}
+
+.svg_star:hover {
+  border: 1px solid pink;
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+  <head>
+    <title>Lottie Basics</title>
+
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <div class="svg_star" id="svg1"></div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.8.1/lottie.min.js" integrity="sha512-V1YyTKZJrzJNhcKthpNAaohFXBnu5K9j7Qiz6gv1knFuf13TW/3vpgVVhJu9fvbdW8lb5J6czIhD4fWK2iHKXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+        
+    const svgContainer_star = document.getElementById('svg1');
+    const animItem_star = bodymovin.loadAnimation({
+        wrapper: svgContainer_star,
+        animType: 'svg',
+        loop: false,
+        autoplay: false,
+        path: 'https://assets7.lottiefiles.com/private_files/lf30_ktaghzd4.json'
+    });
+
+    let clicked = false;
+
+    svgContainer_star.addEventListener('mouseenter', () => {
+        if (!clicked) {
+            console.log('hovering ', animItem_star.totalFrames)
+            animItem_star.setSpeed(1)
+            animItem_star.playSegments([1, 50], true);
+        }
+    })
+    svgContainer_star.addEventListener('click', () => {
+        if (!clicked) {
+            console.log('clicked ', animItem_star.totalFrames)
+            animItem_star.setSpeed(1)
+            animItem_star.playSegments([50, 100], true);
+        } else {
+            console.log('clicked ', animItem_star.totalFrames)
+            // debounceAnimation = true;
+            animItem_star.setSpeed(2)
+            animItem_star.playSegments([48, 0], true);
+        }
+        clicked = !clicked
+    })
+    svgContainer_star.addEventListener('mouseleave', () => {
+        console.log('leave ', animItem_star.totalFrames)
+        if (!clicked && animItem_star.totalFrames < 50) {
+            console.log('leave')
+            animItem_star.setSpeed(2)
+            animItem_star.playSegments([48, 0], true);
+        }
+    })
+
+  </script>
+
+</html>
